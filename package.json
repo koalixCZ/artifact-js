@@ -1,0 +1,16 @@
+{
+	"name": "artifact-js",
+	"version": "0.0.1",
+	"main": "artifact-js.js",
+	"dependencies": {
+
+	},
+	"devDependencies": {
+		"eslint": "^2.4.0",
+		"jasmine": "^2.4.1"
+	},
+	"author": "koalix",
+	"license": "MIT",
+	"scripts": {
+	}
+}
