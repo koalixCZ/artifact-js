@@ -2,15 +2,14 @@
 	"name": "artifact-js",
 	"version": "0.0.1",
 	"main": "artifact-js.js",
-	"dependencies": {
-
-	},
+	"dependencies": {},
 	"devDependencies": {
 		"eslint": "^2.4.0",
-		"jasmine": "^2.4.1"
+		"fs-extra": "^0.26.7",
+		"jasmine": "^2.4.1",
+		"request": "^2.69.0"
 	},
 	"author": "koalix",
 	"license": "MIT",
-	"scripts": {
-	}
+	"scripts": {}
 }
