@@ -5,7 +5,7 @@ var request = require("request");
 /**
  * Downloads a file from internet.
  * @param {string} source
- * @param {function(Error, string)} callback
+ * @param {function(Error, (string|null))} callback
  */
 function curl(source, callback) {
 	var req = request.get(source),

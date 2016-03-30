@@ -25,6 +25,7 @@ function curl(destination, source, callback) {
 			fsx.ensureDir(path.dirname(destination), function (err) {
 				if (err) {
 					callback(err);
+					return;
 				}
 
 				writeStream = readStream.pipe(fs.createWriteStream(destination));
