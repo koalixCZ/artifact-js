@@ -3,7 +3,7 @@
 The happy end of the a long tale how to retrieve a dream artifact.
 
 ## How it can be useful for me?
-If you need to retrieve an artifact from the artifactory by by JavaScript? 
+If you need to retrieve an artifact from the artifactory by JavaScript? 
 Much.
 
 ## How it works?
@@ -20,3 +20,18 @@ You can run the script from the command line:
 
 ## What next?
 If you have a problem, write me.
+
+
+### Download released artifact
+
+Usage: ``node artifact.release destination artifactURL``
+
+    - destination - path where to save the downloaded artifact
+    - artifactURL - URL address to the artifact
+
+URL address should be with or without version of the artifact:
+
+    1. http://artifactory/libs-release-local/wombat/[RELEASE]/wombat-[RELEASE]-js.zip
+    2. http://artifactory/libs-release-local/wombat/1.2/wombat-1.2-js.zip
+
+When the URL is used with ``[RELEASE]``, the last version of released artifact will downloaded.
