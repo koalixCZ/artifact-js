@@ -1,8 +1,9 @@
 {
 	"name": "artifact-js",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "artifact-js.js",
 	"dependencies": {
+		"command-line-args": "^2.1.6",
 		"fs-extra": "^0.26.7",
 		"request": "^2.69.0",
 		"xml2js": "^0.4.16"
