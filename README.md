@@ -4,34 +4,37 @@ The happy end of the a long tale how to retrieve a dream artifact.
 
 ## How it can be useful for me?
 If you need to retrieve an artifact from the artifactory by JavaScript? 
-Much.
 
 ## How it works?
 If you have a pro version of the artifactory, you can retrieve artifacts by REST. 
 If not, you can use Maven metadata to get information about the latest version and with a little bit of work, you can get the the same result.
 
 ## How to configure?
-I like simple things. All what you need to configure you can find in `config.json`.
+I like simple things. All what you need is to pass a few arguments (for details see bellow)
 
 ##How to run?
 You can run the script from the command line:
 
-> node ./src/artifact
+> node ./src/artifact.cli
+
+or use it from a code:
+
+``` javascript
+var artifact = require("artifact");
+
+artifact.take(destination, descriptor, callback); 
+```
 
 ## What next?
 If you have a problem, write me.
 
 
-### Download released artifact
+### Download artifact from a command line
 
-Usage: ``node artifact.release destination artifactURL``
+Usage: ``node artifact.release --destination --repository -- groupId --artifactId --version``
 
     - destination - path where to save the downloaded artifact
-    - artifactURL - URL address to the artifact
-
-URL address should be with or without version of the artifact:
-
-    1. http://artifactory/libs-release-local/wombat/[RELEASE]/wombat-[RELEASE]-js.zip
-    2. http://artifactory/libs-release-local/wombat/1.2/wombat-1.2-js.zip
-
-When the URL is used with ``[RELEASE]``, the last version of released artifact will downloaded.
+    - repository - URL address to the artifactory (e.g. http://artifactory/libs-release-local/)
+    - groupId - a group identifier of the artifact (e.g. koalix.info)
+    - artifactid - a name of the artifact
+    - version - version of the artifact (e.g. 1.2 for a release and 1.2-SNAPSHOT for a snapshot)
