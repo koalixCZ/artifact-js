@@ -1,8 +1,7 @@
 "use strict";
 
 var xml2js = require("xml2js"),
-	curl = require("./curl"),
-	curlString = require("./curl.string");
+	curljs = require("curl-js");
 
 /**
  * @typedef {object} ArtifactDescriptor
@@ -46,7 +45,7 @@ function isSnapshot(version) {
  * @param {function(Error, object)} callback
  */
 function downloadAndParseMetadata(metadataPath, callback) {
-	curlString(metadataPath, function (err, metadata) {
+	curljs.curlToString(metadataPath, function (err, metadata) {
 		if (err) {
 			callback(err, null);
 			return;
@@ -157,10 +156,10 @@ function take(destination, descriptor, callback) {
 				callback(err, null);
 				return;
 			}
-			curl(destination, url, callback);
+			curljs.curl(destination, url, callback);
 		});
 	} else {
-		curl(destination, resolveReleaseArtifactPath(descriptor), callback);
+		curljs.curl(destination, resolveReleaseArtifactPath(descriptor), callback);
 	}
 }
 

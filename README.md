@@ -22,7 +22,12 @@ or use it from a code:
 ``` javascript
 var artifact = require("artifact");
 
-artifact.take(destination, descriptor, callback); 
+artifact.take(destination, descriptor, function (err) {
+    if (err) {
+        return;
+    }
+    // do some stuff
+}); 
 ```
 
 ## What next?
