@@ -12,7 +12,18 @@
 		"eslint": "^2.7.0",
 		"jasmine": "^2.4.1"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/koalixCZ/artifact-js.git"
+	},
+	"keywords": [
+		"javascript",
+		"artifactory"
+	],
 	"author": "koalix",
 	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/koalixCZ/artifact-js/issues"
+	},
 	"scripts": {}
 }
