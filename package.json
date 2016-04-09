@@ -1,7 +1,7 @@
 {
 	"name": "artifact-js",
-	"version": "0.0.4",
-	"main": "artifact-js.js",
+	"version": "0.0.5",
+	"main": "src/artifact.js",
 	"dependencies": {
 		"command-line-args": "^2.1.6",
 		"curl-js": "git+https://github.com/koalixCZ/curl-js.git",
