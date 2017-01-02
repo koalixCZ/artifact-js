@@ -10,6 +10,7 @@ var xml2js = require("xml2js"),
  * @property {string} groupId
  * @property {string} artifactId
  * @property {string} version
+ * @property {string} classifier
  */
 
 /**
@@ -69,13 +70,13 @@ function resolveArtifactPath(descriptor) {
 /**
  * Resolve path to a release version of an artifact.
  * @param {ArtifactDescriptor} descriptor
- * @param {string} artifactId
- * @param {string} version
  * @return {string}
  */
 function resolveReleaseArtifactPath(descriptor) {
+	var classifier = descriptor.classifier ? "-" + descriptor.classifier : "";
+
 	// At this moment we have no regards for a classifier and an extension
-	return resolveArtifactPath(descriptor) + descriptor.artifactId + "-" + descriptor.version + "-js.zip";
+	return resolveArtifactPath(descriptor) + descriptor.artifactId + "-" + descriptor.version + classifier + ".zip";
 }
 
 /**
@@ -91,28 +92,31 @@ function resolveSnapshotMetadataPath(descriptor) {
  * Return name of a snapshot artifact.
  * @param {string} artifactId
  * @param {string} version
+ * @param {string} classifier
  * @param {string} latestSnapshot
  * @return {string}
  */
-function resolveSnapshotArtifactName(artifactId, version, latestSnapshot) {
-	return version.indexOf("-") !== -1 ? artifactId + "-" + latestSnapshot + "-js.zip" : null;
+function resolveSnapshotArtifactName(artifactId, version, classifier, latestSnapshot) {
+	var pathClassifier = classifier ? "-" + classifier : "";
+
+	return version.indexOf("-") !== -1 ? artifactId + "-" + latestSnapshot + pathClassifier + ".zip" : null;
 }
 
 /**
  * Return latest snapshot.
  * @param {object} metadata
- * @return {string}
+ * @return {string|null}
  */
 function findLatestSnapshot(metadata) {
 	var snapshotVersion = metadata.versioning[0].snapshotVersions[0].snapshotVersion,
-		classifier,
 		length = snapshotVersion.length,
+		extension,
 		i;
 
 	for (i = 0; i < length; i++) {
-		classifier = snapshotVersion[i].classifier;
+		extension = snapshotVersion[i].extension;
 
-		if (classifier && classifier[0] === "js") {
+		if (extension !== "pom") {
 			return snapshotVersion[i].value[0];
 		}
 	}
@@ -137,7 +141,7 @@ function resolveSnapshotArtifactPath(descriptor, callback) {
 
 		if (latestSnapshot) {
 			snapShotArtifactPath = resolveArtifactPath(descriptor) +
-				resolveSnapshotArtifactName(descriptor.artifactId, descriptor.version, latestSnapshot);
+				resolveSnapshotArtifactName(descriptor.artifactId, descriptor.version, descriptor.classifier, latestSnapshot);
 		}
 		callback(null, snapShotArtifactPath);
 	});
